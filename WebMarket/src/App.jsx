@@ -14,7 +14,7 @@ import CheckoutPage from "./components/CheckoutPage";
 function App() {
   const [cartDetails, setCartDetails] = useState();
   return (
-    <div className="">
+    <div className=",">
       <BrowserRouter>
         <Routes>
           <Route
