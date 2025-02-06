@@ -1,16 +1,22 @@
 import { Header } from "./Register";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function SideBar() {
+  const navigate = useNavigate();
   return (
     <div className="bg-gray-800 text-white w-1/4 h-screen p-4 ">
       <h1 className="text-center text-3xl font-semibold mb-6">Menu</h1>
       <ul className="space-y-4">
         <li className="hover:text-orange-400 cursor-pointer">Dashboard</li>
         <li className="hover:text-orange-400 cursor-pointer">My Products</li>
-        <li className="hover:text-orange-400 cursor-pointer">Orders</li>
+        <li
+          onClick={() => navigate("/SellerOrdersPage")}
+          className="hover:text-orange-400 cursor-pointer"
+        >
+          Orders
+        </li>
         <li className="hover:text-orange-400 cursor-pointer">Settings</li>
       </ul>
     </div>

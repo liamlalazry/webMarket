@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Header } from "./Register";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Shopcart = ({ cart }) => {
+  const navigate = useNavigate();
   const [clicked, setClicked] = useState(false);
   console.log(cart);
   return (
@@ -30,12 +32,26 @@ const Shopcart = ({ cart }) => {
           {console.log("d", cart)}
           {cart.map((item, i) => (
             <div key={i}>
-              {Object.values(item).map((item) => (
-                <p>{Object.values(item)}</p>
-              ))}
+              {Object.values(item).map((item) => {
+                const arr = Object.values(item);
+                console.log("aw", arr);
+                return (
+                  <div>
+                    <h6>name: {arr[1]}</h6>
+                    <p>description: {arr[4]}</p>
+                    <p>price: {arr[3]}</p>
+                    <br />
+                  </div>
+                );
+              })}
             </div>
           ))}
-          <p className="text-gray-600"></p>
+          <button
+            onClick={() => navigate("/CheckoutPage")}
+            className="text-gray-600"
+          >
+            CheckOut
+          </button>
         </div>
       )}
     </div>
@@ -124,7 +140,6 @@ const SideBarFilters = () => {
 
 const Market = () => {
   const [cart, setCart] = useState([]);
-
   return (
     <div className="relative min-h-screen bg-gray-100">
       <Header />
@@ -135,4 +150,4 @@ const Market = () => {
   );
 };
 
-export default Market;
+export default { Market };
